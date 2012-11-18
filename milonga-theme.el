@@ -215,9 +215,9 @@ CUSTOM-THEME-SET-FACES."
   (custom-theme-set-variables
    'milonga
    `(ansi-color-names-vector
-     (map 'vector
+     ,(map 'vector
 	  (lambda (color)
-	    (cdr (member color colors)))
+	    (cdr (assoc color colors)))
 	  '(gray-6 red-3 green-3 yellow-3 blue-3 purple-3 blue-1 gray-1)))))
 
 (provide-theme 'milonga)
