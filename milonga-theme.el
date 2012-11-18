@@ -177,21 +177,36 @@ and will have COLOR-STRING as foreground/background."
 	   "Return a Custom face specification from FACE-SPEC.
 The specification is suitable to be included in a call to
 CUSTOM-THEME-SET-FACES."
-	   `(,(car face-spec)
-	     ((,class (,@(loop for prop in (cdr face-spec)  by #'cddr
-			       for val  in (cddr face-spec) by #'cddr
-			       collect prop
-			       if (and (symbolp val)
-				       (member* (symbol-name val) colors
-						:key (lambda (elt)
-						       (symbol-name (car elt)))
-						:test (lambda (elt1 elt2)
-							(string-prefix-p 
-							 elt2 elt1))))
-			         collect (intern (concat "milonga-theme-"
-							 (symbol-name val)))
-			       else
-			         collect val)))))))
+	   (let* ((inheritance (getf (cdr face-spec) :inherit)))
+	     (unless (listp inheritance)
+	       (setq inheritance (list inheritance)))
+	     `(,(car face-spec)
+	       ((,class
+		 (,@(mapcan
+		     (lambda (name)
+		       (let ((name-string (symbol-name name)))
+			 (list
+			  (intern
+			   (concat ":"
+				   (substring name-string
+					      (string-match "[^-]+$"
+							    name-string))))
+			  nil)))
+		     inheritance)
+		  ,@(loop for prop in (cdr face-spec)  by #'cddr
+			  for val  in (cddr face-spec) by #'cddr
+			  collect prop
+			  if (and (symbolp val)
+				  (member* (symbol-name val) colors
+					   :key (lambda (elt)
+						  (symbol-name (car elt)))
+					   :test (lambda (elt1 elt2)
+						   (string-prefix-p
+						    elt2 elt1))))
+			    collect (intern (concat "milonga-theme-"
+						    (symbol-name val)))
+			  else
+			    collect val))))))))
     (apply #'custom-theme-set-faces
 	   'milonga
 	   (mapcar #'milonga-theme-face-spec faces)))
