@@ -16,8 +16,7 @@
   "Emacs Custom theme based on the Tango palette (light background).
 Theme customizations available in the milonga-theme group.")
 
-(defgroup milonga-theme nil
-  "The Milonga theme custom group.")
+(defgroup milonga-theme nil "The Milonga theme custom group.")
 
 (let ((colors '((yellow-1 . "#fce94f")
 		(yellow-2 . "#edd400")
@@ -58,8 +57,10 @@ Theme customizations available in the milonga-theme group.")
 		(gray-6 . "#2e3436")))
       (class '((class color) (min-colors 89)))
       (properties '("foreground" "background" "underline" "overline"))
-      (faces
-       '((default :inherit (gray-6-foreground gray-1-background))
+      (faces 
+       '(;; The DEFAULT face doesn't seem to like inheritance, so we
+	 ;; set the attributes directly.
+	 (default :foreground gray-6 :background gray-1)
 
 	 (fringe :inherit gray-2-background)
 	 (mode-line :box (:line-width -1 :style released-button)
@@ -67,7 +68,9 @@ Theme customizations available in the milonga-theme group.")
 	 (mode-line-inactive :box (:line-width -1 :style released-button)
 			     :inherit (gray-6-foreground gray-4-background))
 
-	 (cursor :inherit blue-3-background)
+	 ;; The CURSOR face understands only the BACKGROUND attribute,
+	 ;; so we also set it directly.
+	 (cursor :background blue-3)
 	 (highlight :inherit gray-3-background)
 	 (region :inherit gray-3-background)
 	 (secondary-selection :inherit blue-0-background)
@@ -153,36 +156,51 @@ Theme customizations available in the milonga-theme group.")
 	 (semantic-unmatched-syntax-face :inherit red-1-underline))))
   
   ;; 1. Create the core theme faces
-  (flet ((milonga-theme-make-faces (color-spec)
-	   "Create two Milonga theme faces based on COLOR-SPEC.
-COLOR-SPEC is of the form (NAME . COLOR-STRING).
-The faces will be named milonga-theme-NAME-foreground/background
-and will have COLOR-STRING as foreground/background."
-	   (dolist (property properties)
-	     (let* ((name-string (concat "milonga-theme-"
-					 (symbol-name (car color-spec))
-					 "-"
-					 property))
-		    (name (intern name-string)))
-	       (custom-declare-face
-		name
-		`((,class (,(intern (concat ":" property)) ,(cdr color-spec))))
-		(concat "The " (upcase name-string) " face.")
-		:group 'milonga-theme)))))
+  (cl-flet ((milonga-theme-make-faces (color-spec)
+	      "Create Milonga theme faces based on COLOR-SPEC.
+COLOR-SPEC is of the form (NAME . COLOR-STRING).  The faces will
+be named milonga-theme-NAME-PROPERTY, for every property from
+PROPERTIES, and will have COLOR-STRING as foreground/background."
+	      (dolist (property properties)
+		(let* ((name-string (concat "milonga-theme-"
+					    (symbol-name (car color-spec))
+					    "-"
+					    property))
+		       (name (intern name-string)))
+		  (custom-declare-face
+		   name
+		   `((,class (,(intern (concat ":" property))
+			      ,(cdr color-spec))))
+		   (concat "The " (upcase name-string) " face.")
+		   :group 'milonga-theme)))))
     (dolist (color colors)
       (milonga-theme-make-faces color)))
 
   ;; 2. Declare all faces based on their specification
-  (flet ((milonga-theme-face-spec (face-spec)
-	   "Return a Custom face specification from FACE-SPEC.
+  (flet ((milonga-theme-face-spec (face-def)
+	   "Return a Custom face specification from FACE-DEF.
 The specification is suitable to be included in a call to
 CUSTOM-THEME-SET-FACES."
-	   (let* ((inheritance (getf (cdr face-spec) :inherit)))
+	   (let* ((face-spec (cdr face-def))
+		  (inheritance (getf face-spec :inherit)))
 	     (unless (listp inheritance)
 	       (setq inheritance (list inheritance)))
-	     `(,(car face-spec)
+	     `(,(car face-def)
 	       ((,class
-		 (,@(mapcan
+		 (;; Inline face attributes with known color names
+		  ;; replaced by their actual value.
+		  ,@(loop for prop in face-spec       by #'cddr
+			  for val  in (cdr face-spec) by #'cddr
+			  unless (eq prop :inherit)
+			    collect prop
+			    and if (cdr (assoc val colors))
+			          collect it
+			        else
+			          collect val)
+		  ;; Be sure to nullify explicitely all attributes
+		  ;; from which we inherit. Otherwise, the inheritance
+		  ;; would not have any effect.
+		  ,@(mapcan
 		     (lambda (name)
 		       (let ((name-string (symbol-name name)))
 			 (list
@@ -193,20 +211,23 @@ CUSTOM-THEME-SET-FACES."
 							    name-string))))
 			  nil)))
 		     inheritance)
-		  ,@(loop for prop in (cdr face-spec)  by #'cddr
-			  for val  in (cddr face-spec) by #'cddr
-			  collect prop
-			  if (and (symbolp val)
-				  (member* (symbol-name val) colors
-					   :key (lambda (elt)
-						  (symbol-name (car elt)))
-					   :test (lambda (elt1 elt2)
-						   (string-prefix-p
-						    elt2 elt1))))
-			    collect (intern (concat "milonga-theme-"
-						    (symbol-name val)))
-			  else
-			    collect val))))))))
+		  ;; Inline the inheritance list with known faces
+		  ;; properly named.
+		  ,@(when inheritance
+		      `(:inherit
+			,(mapcar
+			  (lambda (parent)
+			    (if (and (symbolp parent)
+				     (member* (symbol-name parent) colors
+					      :key (lambda (elt)
+						     (symbol-name (car elt)))
+					      :test (lambda (elt1 elt2)
+						      (string-prefix-p
+						       elt2 elt1))))
+				(intern (concat "milonga-theme-"
+						(symbol-name parent)))
+			      parent))
+			  inheritance))))))))))
     (apply #'custom-theme-set-faces
 	   'milonga
 	   (mapcar #'milonga-theme-face-spec faces)))
