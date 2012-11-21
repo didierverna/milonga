@@ -163,7 +163,7 @@ Theme customizations available in the milonga-theme group.")
 	 (semantic-unmatched-syntax-face :inherit red-1-underline))))
   
   ;; 1. Create the core theme faces
-  (cl-flet ((milonga-theme-make-faces (color-spec)
+  (flet ((milonga-theme-make-faces (color-spec)
 	      "Create Milonga theme faces based on COLOR-SPEC.
 COLOR-SPEC is of the form (NAME . COLOR-STRING).  The faces will
 be named milonga-theme-NAME-PROPERTY, for every property from
