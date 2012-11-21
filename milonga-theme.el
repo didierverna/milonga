@@ -94,6 +94,12 @@ Theme customizations available in the milonga-theme group.")
 	 (font-lock-type-face :inherit blue-3-foreground)
 	 (font-lock-variable-name-face :inherit orange-4-foreground)
 	 
+	 (hash-fixme   :inherit red-3-foreground)
+	 (hash-warning :inherit orange-3-foreground)
+	 (hash-note    :inherit brown-3-foreground)
+
+	 (dark :inherit gray-3-foreground)
+
 	 (link :inherit (blue-3-foreground blue-3-underline))
 	 (link-visited :inherit (blue-2-foreground blue-2-underline))
 
@@ -119,6 +125,7 @@ Theme customizations available in the milonga-theme group.")
 	 (gnus-group-mail-3-empty :inherit blue-1-foreground)
 	 (gnus-group-mail-low :weight bold :inherit blue-0-foreground)
 	 (gnus-group-mail-low-empty :inherit blue-0-foreground)
+	 (gnus-summary-cancelled :strike-through t)
 	 (gnus-header-content :inherit green-3-foreground)
 	 (gnus-header-from :weight bold :inherit yellow-3-foreground)
 	 (gnus-header-subject :inherit red-3-foreground)
