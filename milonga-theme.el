@@ -125,6 +125,10 @@ Theme customizations available in the milonga-theme group.")
 	 (gnus-group-mail-3-empty :inherit blue-1-foreground)
 	 (gnus-group-mail-low :weight bold :inherit blue-0-foreground)
 	 (gnus-group-mail-low-empty :inherit blue-0-foreground)
+	 (gnus-group-server-denied :inherit red-3-foreground
+				   :slant oblique)
+	 (gnus-group-server-closed :inherit gray-4-foreground
+				   :slant oblique)
 	 (gnus-summary-cancelled :strike-through t)
 	 (gnus-header-content :inherit green-3-foreground)
 	 (gnus-header-from :weight bold :inherit yellow-3-foreground)
