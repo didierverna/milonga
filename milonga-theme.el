@@ -57,7 +57,7 @@ Theme customizations available in the milonga-theme group.")
 		(gray-6 . "#2e3436")))
       (class '((class color) (min-colors 89)))
       (properties '("foreground" "background" "underline" "overline"))
-      (faces 
+      (faces
        '(;; The DEFAULT face doesn't seem to like inheritance, so we
 	 ;; set the attributes directly.
 	 (default :foreground gray-6 :background gray-1)
@@ -84,7 +84,7 @@ Theme customizations available in the milonga-theme group.")
 	 (error :inherit red-3-foreground)
 	 (warning :inherit orange-3-foreground)
 	 (success :inherit green-3-foreground)
-	 
+
 	 (font-lock-builtin-face :inherit purple-2-foreground)
 	 (font-lock-comment-face :slant italic :inherit gray-5-foreground)
 	 (font-lock-constant-face :weight bold :inherit blue-3-foreground)
@@ -93,12 +93,14 @@ Theme customizations available in the milonga-theme group.")
 	 (font-lock-string-face :inherit purple-3-foreground)
 	 (font-lock-type-face :inherit blue-3-foreground)
 	 (font-lock-variable-name-face :inherit orange-4-foreground)
-	 
+
 	 (hash-fixme   :inherit red-3-foreground)
 	 (hash-warning :inherit orange-3-foreground)
 	 (hash-note    :inherit brown-3-foreground)
 
 	 (dark :inherit gray-3-foreground)
+
+	 (whitespace-tab :background nil :inherit gray-2-foreground)
 
 	 (link :inherit (blue-3-foreground blue-3-underline))
 	 (link-visited :inherit (blue-2-foreground blue-2-underline))
@@ -165,7 +167,7 @@ Theme customizations available in the milonga-theme group.")
 	  :inherit orange-3-underline)
 	 (semantic-tag-boundary-face :inherit blue-1-overline)
 	 (semantic-unmatched-syntax-face :inherit red-1-underline))))
-  
+
   ;; 1. Create the core theme faces
   (flet ((milonga-theme-make-faces (color-spec)
 	      "Create Milonga theme faces based on COLOR-SPEC.
@@ -205,9 +207,9 @@ CUSTOM-THEME-SET-FACES."
 			  unless (eq prop :inherit)
 			    collect prop
 			    and if (cdr (assoc val colors))
-			          collect it
-			        else
-			          collect val)
+				  collect it
+				else
+				  collect val)
 		  ;; Be sure to nullify explicitely all attributes
 		  ;; from which we inherit. Otherwise, the inheritance
 		  ;; would not have any effect.
