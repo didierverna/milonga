@@ -105,6 +105,15 @@ Theme customizations available in the milonga-theme group.")
 	 (link :inherit (blue-3-foreground blue-3-underline))
 	 (link-visited :inherit (blue-2-foreground blue-2-underline))
 
+	 (slime-highlight-edits-face :slant oblique)
+	 (slime-error-face :inherit red-3-foreground)
+	 (slime-style-warning-face :inherit orange-3-foreground)
+	 (slime-warning-face :inherit orange-3-foreground)
+	 (slime-note-face :inherit brown-3-foreground)
+	 (slime-repl-inputed-output-face :inherit blue-3-foreground)
+	 (slime-repl-output-mouseover-face
+	  :inherit slime-repl-inputed-output-face)
+
 	 (gnus-group-news-1 :weight bold :inherit orange-4-foreground)
 	 (gnus-group-news-1-empty :inherit orange-4-foreground)
 	 (gnus-group-news-2 :weight bold :inherit orange-3-foreground)
