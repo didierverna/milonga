@@ -3,9 +3,40 @@
 ;; Copyright (C) 2012, 2013 Didier Verna
 
 ;; Author: Didier Verna <didier@didierverna.net>
+;; Created: 18 Nov 2012
+;; Keywords: faces
+;; Version: 1.0
+;; Homepage: http://www.lrde.epita.fr/~didier/software/emacs/#milonga
+
+;; This file is part of Milonga.
+
+;; Milonga is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; Milonga is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with Wipe.  If not, see <http://www.gnu.org/licenses/>.
 
 
 ;;; Commentary
+
+;; Milonga is a Custom theme for Emacs. It is based on the Tango color palette
+;; and it also mostly looks like the Tango theme itself. The important
+;; difference with the Tango theme is in the way Milonga is programmed. Every
+;; basic color in the palette has a corresponding foreground and background
+;; face, and every themed face inherits from one or two of them instead of
+;; having its color hard-wired. This means that if you want to change one of
+;; the original colors throughout the theme, you only need to customize one
+;; (or two) faces.
+
+;; Milonga provides the `milonga-theme' Custom group from which you may access
+;; the aforementioned core faces.
 
 
 ;;; Code:
