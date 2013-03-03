@@ -1,4 +1,4 @@
-;;; milonga-theme.el --- Tango-based Custom theme for Emacs.
+;;; milonga-theme.el --- Tango-based customizable Custom theme for Emacs.
 
 ;; Copyright (C) 2012, 2013 Didier Verna
 
