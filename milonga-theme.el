@@ -101,6 +101,7 @@ Theme customizations available in the milonga-theme group.")
 	 (dark :inherit gray-3-foreground)
 
 	 (whitespace-tab :background nil :inherit gray-2-foreground)
+	 (wipe-tab       :background nil :inherit gray-2-foreground)
 
 	 (link :inherit (blue-3-foreground blue-3-underline))
 	 (link-visited :inherit (blue-2-foreground blue-2-underline))
