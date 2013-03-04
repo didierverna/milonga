@@ -1,4 +1,4 @@
-;;; milonga-theme.el --- Tango-based customizable Custom theme for Emacs.
+;;; milonga-theme.el --- Tango-based customizable Custom theme for Emacs
 
 ;; Copyright (C) 2012, 2013 Didier Verna
 
@@ -42,6 +42,7 @@
 ;;; Code:
 
 (require 'cl)
+
 
 (deftheme milonga
   "Emacs Custom theme based on the Tango palette (light background).
@@ -294,6 +295,7 @@ CUSTOM-THEME-SET-FACES."
 	  (lambda (color)
 	    (cdr (assoc color colors)))
 	  '(gray-6 red-3 green-3 yellow-3 blue-3 purple-3 blue-1 gray-1)))))
+
 
 (provide-theme 'milonga)
 
