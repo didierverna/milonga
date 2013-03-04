@@ -1,4 +1,4 @@
-;;; milonga-theme.el --- Tango-based customizable Custom theme for Emacs
+;;; milonga-theme.el --- Tango-based customizable theme for Emacs
 
 ;; Copyright (C) 2012, 2013 Didier Verna
 
@@ -26,8 +26,8 @@
 
 ;;; Commentary
 
-;; Milonga is a Custom theme for Emacs. It is based on the Tango color palette
-;; and it also mostly looks like the Tango theme itself. The important
+;; Milonga is a customizable theme for Emacs. It is based on the Tango color
+;; palette and it also mostly looks like the Tango theme itself. The important
 ;; difference with the Tango theme is in the way Milonga is programmed. Every
 ;; basic color in the palette has a corresponding foreground and background
 ;; face, and every themed face inherits from one or two of them instead of
