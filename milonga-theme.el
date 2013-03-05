@@ -38,6 +38,10 @@
 ;; Milonga provides the `milonga-theme' Custom group from which you may access
 ;; the aforementioned core faces.
 
+;; Milonga currently provides customizations for the Emacs core faces, a few
+;; personal faces and the following libraries: EDiff, Flyspell, Font Lock,
+;; Gnus, Semantic, Slime, SMerge, Whitespace and Wipe.
+
 
 ;;; Code:
 
