@@ -43,6 +43,13 @@
 ;; Gnus, Semantic, Slime, SMerge, Whitespace and Wipe.
 
 
+;;; History:
+
+;; Version 1.0
+;; -----------
+;; First public version.
+
+
 ;;; Code:
 
 (require 'cl)
