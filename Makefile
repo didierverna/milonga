@@ -34,7 +34,7 @@ SIG_FILE   := $(THEME_FILE).asc
 
 VERSION := $(shell grep -m 1 "^;; Version: " $(THEME_FILE) \
 	         | sed 's|;; Version: ||')
-
+VERSION_FILE := $(THEME_NAME)-version.txt
 
 WWW_HOST := www
 WWW_DIR  := ~/www/software/elisp
@@ -46,12 +46,13 @@ clean:
 	rm -f *~
 
 distclean: clean
-	rm -f $(SIG_GILE)
+	rm -f $(SIG_FILE) $(VERSION_FILE)
 
-install-www: $(SIG_GILE)
-	echo "$(VERSION)" > $(THEME_NAME)-version.txt
+install-www: $(SIG_FILE)
+	echo "$(VERSION)" > $(VERSION_FILE)
 	scp -p $(THEME_NAME)-version.txt $(THEME_FILE) $(SIG_FILE) \
           $(WWW_HOST):$(WWW_DIR)/
+	rm -f $(VERSION_FILE)
 
 tag:
 	git tag 'version-$(VERSION)'
@@ -61,6 +62,6 @@ tag:
 	gpg -a -b $<
 
 
-.PHONY: all tag asc
+.PHONY: tag
 
 ### Makefile ends here
