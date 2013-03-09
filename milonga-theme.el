@@ -45,6 +45,10 @@
 
 ;;; History:
 
+;; Version 1.1
+;; -----------
+;; - Customizations for the Gnus cite faces.
+
 ;; Version 1.0
 ;; -----------
 ;; First public version.
@@ -190,6 +194,18 @@ Theme customizations available in the milonga-theme group.")
 	 (gnus-header-subject :inherit red-3-foreground)
 	 (gnus-header-name :inherit blue-3-foreground)
 	 (gnus-header-newsgroups :inherit gray-4-foreground)
+
+	 (gnus-cite-1 :inherit red-3-foreground)
+	 (gnus-cite-2 :inherit purple-3-foreground)
+	 (gnus-cite-3 :inherit blue-3-foreground)
+	 (gnus-cite-4 :inherit green-4-foreground)
+	 (gnus-cite-5 :inherit brown-3-foreground)
+	 (gnus-cite-6 :inherit orange-4-foreground)
+	 (gnus-cite-7 :inherit yellow-3-foreground)
+	 (gnus-cite-8 :inherit red-2-foreground)
+	 (gnus-cite-9 :inherit purple-2-foreground)
+	 (gnus-cite-10 :inherit blue-3-foreground)
+	 (gnus-cite-10 :inherit green-3-foreground)
 
 	 (message-header-name :inherit blue-3-foreground)
 	 (message-header-cc :inherit yellow-3-foreground)
