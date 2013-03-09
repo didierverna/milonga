@@ -48,6 +48,7 @@
 ;; Version 1.1
 ;; -----------
 ;; - Customizations for the Gnus cite faces.
+;; - Customizations for more Wipe and Whitespace faces.
 
 ;; Version 1.0
 ;; -----------
@@ -147,8 +148,27 @@ Theme customizations available in the milonga-theme group.")
 
 	 (dark :inherit gray-3-foreground)
 
+	 (whitespace-empty :inherit yellow-1-background)
+	 (whitespace-line :inherit purple-1-background)
+	 (whitespace-indentation :inherit red-1-background)
+	 (whitespace-space-after-tab :inherit red-1-background)
+	 (whitespace-space-before-tab :inherit red-1-background)
+	 (whitespace-trailing :inherit red-1-background)
 	 (whitespace-tab :background nil :inherit gray-2-foreground)
-	 (wipe-tab       :background nil :inherit gray-2-foreground)
+	 (whitespace-newline :background nil :inherit gray-2-foreground)
+	 (whitespace-space :background nil :inherit gray-2-foreground)
+	 (whitespace-hspace :background nil :inherit gray-2-foreground)
+
+	 (wipe-empty :inherit yellow-1-background)
+	 (wipe-line :inherit purple-1-background)
+	 (wipe-indentation :inherit red-1-background)
+	 (wipe-space-after-tab :inherit red-1-background)
+	 (wipe-space-before-tab :inherit red-1-background)
+	 (wipe-trailing :inherit red-1-background)
+	 (wipe-tab :background nil :inherit gray-2-foreground)
+	 (wipe-newline :background nil :inherit gray-2-foreground)
+	 (wipe-space :background nil :inherit gray-2-foreground)
+	 (wipe-hspace :background nil :inherit gray-2-foreground)
 
 	 (link :inherit (blue-3-foreground blue-3-underline))
 	 (link-visited :inherit (blue-2-foreground blue-2-underline))
