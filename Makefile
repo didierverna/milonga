@@ -33,7 +33,7 @@ THEME_FILE := $(THEME_NAME)-theme.el
 SIG_FILE   := $(THEME_FILE).asc
 
 VERSION := $(shell grep -m 1 "^;; Version: " $(THEME_FILE) \
-	         | sed 's|;; Version: ||')
+		 | sed 's|;; Version: ||')
 VERSION_FILE := $(THEME_NAME)-version.txt
 
 WWW_HOST := www
@@ -51,7 +51,7 @@ distclean: clean
 install-www: $(SIG_FILE)
 	echo "$(VERSION)" > $(VERSION_FILE)
 	scp -p $(THEME_NAME)-version.txt $(THEME_FILE) $(SIG_FILE) \
-          $(WWW_HOST):$(WWW_DIR)/
+	  $(WWW_HOST):$(WWW_DIR)/
 	rm -f $(VERSION_FILE)
 
 tag:
