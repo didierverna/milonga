@@ -141,11 +141,14 @@ Theme customizations available in the milonga-theme group.")
 	 (font-lock-type-face :inherit blue-3-foreground)
 	 (font-lock-variable-name-face :inherit orange-4-foreground)
 
-	 (hash-fixme   :inherit red-3-foreground)
-	 (hash-warning :inherit orange-3-foreground)
-	 (hash-note    :inherit brown-3-foreground)
+	 ;; These faces are personal additions to font-lock.
+	 (dvl-hash-fixme   :inherit red-3-foreground)
+	 (dvl-hash-warning :inherit orange-3-foreground)
+	 (dvl-hash-note    :inherit brown-3-foreground)
+	 (dvl-dark :inherit gray-3-foreground)
 
-	 (dark :inherit gray-3-foreground)
+	 (link :inherit (blue-3-foreground blue-3-underline))
+	 (link-visited :inherit (blue-2-foreground blue-2-underline))
 
 	 (whitespace-empty :inherit yellow-1-background)
 	 (whitespace-line :inherit purple-1-background)
@@ -168,9 +171,6 @@ Theme customizations available in the milonga-theme group.")
 	 (wipe-newline :background nil :inherit gray-2-foreground)
 	 (wipe-space :background nil :inherit gray-2-foreground)
 	 (wipe-hspace :background nil :inherit gray-2-foreground)
-
-	 (link :inherit (blue-3-foreground blue-3-underline))
-	 (link-visited :inherit (blue-2-foreground blue-2-underline))
 
 	 (slime-highlight-edits-face :slant oblique)
 	 (slime-error-face :inherit red-3-foreground)
