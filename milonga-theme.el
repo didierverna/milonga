@@ -26,9 +26,8 @@
 
 ;;; Commentary
 
-;; Milonga is a customizable theme for Emacs. It is based on the Tango color
-;; palette and it also mostly looks like the Tango theme itself. The important
-;; difference with the Tango theme is in the way Milonga is programmed. Every
+;; Milonga is a customizable theme for Emacs, based on the Tango color
+;; palette. The specificity of Milonga is in the way it is programmed. Every
 ;; basic color in the palette has a corresponding foreground and background
 ;; face, and every themed face inherits from one or two of them instead of
 ;; having its color hard-wired. This means that if you want to change one of
