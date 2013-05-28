@@ -137,7 +137,7 @@ Theme customizations available in the milonga-theme group.")
 	 (font-lock-constant-face :weight bold :inherit blue-3-foreground)
 	 (font-lock-function-name-face :inherit red-3-foreground)
 	 (font-lock-keyword-face :inherit green-4-foreground)
-	 (font-lock-string-face :inherit purple-3-foreground)
+	 (font-lock-string-face :inherit brown-3-foreground)
 	 (font-lock-type-face :inherit blue-3-foreground)
 	 (font-lock-variable-name-face :inherit orange-4-foreground)
 
