@@ -44,6 +44,11 @@
 
 ;;; History:
 
+;; Version 1.2
+;; -----------
+;; - Switch `font-lock-string-face' to Brown 3, to better distinguish strings
+;;   from (purple) keywords.
+
 ;; Version 1.1
 ;; -----------
 ;; - Customizations for the Gnus cite faces.
