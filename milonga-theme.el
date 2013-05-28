@@ -5,7 +5,7 @@
 ;; Author: Didier Verna <didier@didierverna.net>
 ;; Created: 18 Nov 2012
 ;; Keywords: faces
-;; Version: 1.1
+;; Version: 1.2
 ;; Homepage: http://www.lrde.epita.fr/~didier/software/elisp/#milonga
 
 ;; This file is part of Milonga.
