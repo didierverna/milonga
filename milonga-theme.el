@@ -6,7 +6,7 @@
 ;; Created: 18 Nov 2012
 ;; Keywords: faces
 ;; Version: 1.1
-;; Homepage: http://www.lrde.epita.fr/~didier/software/elisp.php#milonga
+;; Homepage: http://www.lrde.epita.fr/~didier/software/elisp/#milonga
 
 ;; This file is part of Milonga.
 
