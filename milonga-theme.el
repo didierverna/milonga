@@ -44,6 +44,10 @@
 
 ;;; History:
 
+;; Version 1.3
+;; -----------
+;; - Customizations for Web-Mode faces.
+
 ;; Version 1.2
 ;; -----------
 ;; - Switch `font-lock-string-face' to Brown 3, to better distinguish strings
@@ -259,7 +263,19 @@ Theme customizations available in the milonga-theme group.")
 	 (semantic-decoration-on-unparsed-includes
 	  :inherit orange-3-underline)
 	 (semantic-tag-boundary-face :inherit blue-1-overline)
-	 (semantic-unmatched-syntax-face :inherit red-1-underline))))
+	 (semantic-unmatched-syntax-face :inherit red-1-underline)
+
+	 (web-mode-whitespaces-face :inherit trailing-whitespace)
+	 (web-mode-server-face :inherit gray-2-background)
+	 (web-mode-param-name-face :inherit font-lock-variable-name-face)
+	 (web-mode-json-key-face :inherit font-lock-keyword-face)
+	 (web-mode-json-context-face :inherit font-lock-keyword-face)
+	 (web-mode-html-tag-face :inherit font-lock-function-name-face)
+	 (web-mode-html-attr-name-face :inherit font-lock-builtin-face)
+	 (web-mode-doctype-face :inherit font-lock-comment-face)
+	 (web-mode-css-rule-face :inherit font-lock-function-name-face)
+	 (web-mode-css-pseudo-class-face :inherit font-lock-function-name-face)
+	 (web-mode-css-prop-face :inherit font-lock-variable-name-face))))
 
   ;; 1. Create the core theme faces
   (flet ((milonga-theme-make-faces (color-spec)
