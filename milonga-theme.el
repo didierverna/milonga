@@ -47,6 +47,7 @@
 ;; Version 1.3
 ;; -----------
 ;; - Customizations for Web-Mode faces.
+;; - Fix inheritance-related bug.
 
 ;; Version 1.2
 ;; -----------
@@ -319,20 +320,6 @@ CUSTOM-THEME-SET-FACES."
 				  collect it
 				else
 				  collect val)
-		  ;; Be sure to nullify explicitely all attributes
-		  ;; from which we inherit. Otherwise, the inheritance
-		  ;; would not have any effect.
-		  ,@(mapcan
-		     (lambda (name)
-		       (let ((name-string (symbol-name name)))
-			 (list
-			  (intern
-			   (concat ":"
-				   (substring name-string
-					      (string-match "[^-]+$"
-							    name-string))))
-			  nil)))
-		     inheritance)
 		  ;; Inline the inheritance list with known faces
 		  ;; properly named.
 		  ,@(when inheritance
